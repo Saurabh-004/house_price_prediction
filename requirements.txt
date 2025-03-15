@@ -1,0 +1,5 @@
+Flask==2.2.5
+Flask-Cors==3.0.10
+numpy==1.24.3
+gunicorn==20.1.0  # Required for deployment
+pickle5==0.0.12   # (If using Python 3.7 or older, otherwise remove this)

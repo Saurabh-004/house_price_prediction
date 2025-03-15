@@ -1,0 +1,68 @@
+*{
+    padding: 0;
+    margin:0;
+}
+body{
+    background-image: url('houseIMage.jpg');
+    
+    text-align: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#heading{
+    padding:20px;
+    color: White;
+    margin-bottom: 20px;
+    font-family:sans-serif;
+    font-size: larger;
+    letter-spacing: 1px;
+
+    ;
+}
+.estimated_price{
+    color:rgb(30, 101, 163);
+    background-color: bisque;
+    display: inline-block;
+    margin:5px;
+    padding:5px;
+    border-radius: 5px;
+    
+}
+#form{
+    position: relative;
+    top:50px;
+    padding: 20px;
+    background-color: rgba(19, 40, 49, 0.7);
+    backdrop-filter: blur(6px);
+    display: inline-block;
+    border-radius: 20px;
+    
+ 
+}
+.features{
+    padding:20px;
+    margin: 10px;
+    color:white;
+    font-family: monospace;
+    font-size: large;
+
+    ;
+}
+button{
+    margin:5px;
+    padding: 10px; 
+    border-radius: 5px;
+    font-family: sans-serif;
+
+}
+footer{
+    position: relative;
+    padding:30px;
+    top: 100px;
+    background-color: black;
+    color:rgb(190, 190, 190);
+}
+/* #form{
+    
+} */

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <div id="form">
+        <div id="heading"><h1>Bangalore House Prediction Model</h1></div>
+        <div class = "features">
+            <h2>Enter Area</h2>
+            <input type="numbre" placeholder="area in sqft" id="sqft">
+        </div>
+        <div class="features">
+            <h2>Select Location</h2>
+            <select class="location" id="uilocation">
+                <option>
+                    Indira Nagar
+                </option>
+                <option>1st jaynagar</option>
+
+            </select>
+            
+        </div>
+        <div class="features">
+            <h2>BHK</h2>
+            <label for="radio-bhk-1">1</label>
+            <input type="radio" id="radio-bhk-1"name="bath" value="1">
+            <label for="radio-bhk-2">2</label>
+            <input type="radio" id="radio-bhk-2"name="bath" value="2">
+            <label for="radio-bhk-3">3</label>
+            <input type="radio" id="radio-bhk-3"name="bath" value="3">
+            <label for="radio-bhk-4">4</label>
+            <input type="radio" id="radio-bhk-4"name="bath" value="4">
+            <label for="radio-bhk-5">5</label>
+            <input type="radio" id="radio-bhk-5"name="bath" value="5">
+        </div>
+            
+        <div class="features">
+            <h2>Number of Balcony</h2>
+            <label for="radio-balcony-1">1</label>
+            <input type="radio" id="radio-balcony-1"name="Balcony" value="1">
+            <label for="radio-balcony-2">2</label>
+            <input type="radio" id="radio-balcony-2"name="Balcony" value="2">
+            <label for="radio-balcony-3">3</label>
+            <input type="radio" id="radio-balcony-3"name="Balcony" value="3">
+
+
+        </div>
+            
+        <div class="features">
+            <h2>Numbre of Bathrooms</h2>
+            <label for="radio-bathrooms-1">1</label>
+            <input type="radio" id="radio-bathrooms-1"name="bathrooms" value="1">
+            <label for="radio-bathrooms-2">2</label>
+            <input type="radio" id="radio-bathrooms-2"name="bathrooms" value="2">
+            <label for="radio-bathrooms-3">3</label>
+            <input type="radio" id="radio-bathrooms-3"name="bathrooms" value="3">
+            <label for="radio-bathrooms-4">4</label>
+            <input type="radio" id="radio-bathrooms-4"name="bathrooms" value="4">
+            <label for="radio-bathrooms-5">5</label>
+            <input type="radio" id="radio-bathrooms-5"name="bathrooms" value="5">
+            
+        </div>
+        <div>
+            <button class="submit" type="button " onclick="onclickEstimatedPrice()"> Predict Price</button>
+        </div>
+        <div id="estprice">
+            <h2></h2>
+        </div>
+           
+    </div>
+    <footer>
+        &copy; w'sup bruh
+    </footer>
+    <script src="index.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</body>
+</html>

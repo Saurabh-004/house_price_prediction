@@ -34,6 +34,7 @@ pip install -r requirements.txt
 ```
 ### **4️⃣ Run the Flask App**
 ```bash
-python app.py
+python server.py
 
 
+### **5 Run the HTML file**

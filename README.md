@@ -40,25 +40,24 @@ A full-stack machine learning web application to predict house prices based on v
 ### 1️⃣ Clone the Repository  
 ```bash
 git clone https://github.com/Saurabh-004/house_price_prediction
+```
+
 ### 2️⃣ Create a Virtual Environment (Recommended)
-bash
-Copy
-Edit
+```bash
 python -m venv venv
 source venv/bin/activate      # Mac/Linux  
 venv\Scripts\activate         # Windows
+```
 
 ### 3️⃣Install the Dependencies
-bash
-Copy
-Edit
+```bash
 pip install -r requirements.txt
+```
 ### 4️⃣ Run the Flask App
-bash
-Copy
-Edit
+```bash
 python server.py
 Then open http://localhost:5000 in your browser.
+```
 
 📁 Folder Structure
 cpp

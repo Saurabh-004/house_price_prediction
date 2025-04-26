@@ -31,7 +31,7 @@ function onclickEstimatedPrice(){
     let location = document.getElementById("uilocation");
     var estprice = document.getElementById("estprice");
     
-    var url = "http://127.0.0.1:5000/makeprediction";
+    var url = "/makeprediction";
     // var url = "/api/makeprediction";
     $.post(url,{
         sqft: parseFloat(sqrft.value),
@@ -52,7 +52,7 @@ function onclickEstimatedPrice(){
 
 
 function onPageload(){
-    var url = "http://127.0.0.1:5000/get_location";
+    var url = "/get_location";
     // var url = "/api/get_location"
     $.get(url,function(data,status){
         console.log("got response get location names");

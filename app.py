@@ -3,13 +3,14 @@ from flask_cors import CORS
 import util
 import os
 
-app = Flask(__name__, static_folder='client')
+app = Flask(__name__, static_folder='client', static_url_path='')
 CORS(app)  # CORS lagana zaruri hai bro jab remote pe ho
 
 # Route for home
 @app.route('/')
-def home():
-    return send_from_directory(app.static_folder, 'app.html')
+def serve_home():
+    return app.send_static_file('app.html')
+
 
 # Serve static files (CSS, JS, Images)
 @app.route('/<path:path>')

@@ -40,4 +40,4 @@ def Predict():
 if __name__ == "__main__":
     print("Starting python flask server...")
     util.load_artifacts()
-    app.run()
+    

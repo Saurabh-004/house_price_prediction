@@ -3,7 +3,7 @@ from flask_cors import CORS
 import util
 import os
 
-app = Flask(__name__, static_folder='Client')
+app = Flask(__name__, static_folder='client')
 CORS(app)  # CORS lagana zaruri hai bro jab remote pe ho
 
 # Route for home

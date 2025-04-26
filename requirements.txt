@@ -1,5 +1,5 @@
-Flask==2.2.5
-Flask-Cors==3.0.10
-numpy==1.24.3
-gunicorn==20.1.0  # Required for deployment
-
+Flask
+pandas
+numpy
+scikit-learn
+gunicorn

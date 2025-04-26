@@ -11,21 +11,27 @@ def get_location():
     '''To get the location list'''
     return __location
 
+
+
 def load_artifacts():
-    #this function will load the model and json file which contains the list of location
     print("Loading saved artifacts")
     
-    with open("Model\columns.json","r") as f:
-        
-        global __location
-        global __data_columns
-        __data_columns = json.load(f)['columns']
-        __location = __data_columns[4:]
-    
-    with open("Model\linearModel","rb") as f:
-        global __model
-        __model = pickle.load(f)
-    print("saved artifacts Loaded")
+    try:
+        with open("Model/columns.json", "r") as f:
+            global __location
+            global __data_columns
+            __data_columns = json.load(f)['columns']
+            __location = __data_columns[4:]  # Assuming location starts from the 5th element.
+            print(f"Loaded locations: {__location}")  # Debugging line
+
+        with open("Model/linearModel", "rb") as f:
+            global __model
+            __model = pickle.load(f)
+
+        print("Saved artifacts loaded successfully.")
+    except Exception as e:
+        print(f"Error loading artifacts: {str(e)}")
+
 
 def estimatePrice(location,sqft,bath,balcony,bhk):
     try:

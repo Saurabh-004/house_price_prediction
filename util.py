@@ -7,43 +7,33 @@ __location = None
 __data_columns = None
 __model = None
 
-def get_location(): 
-    print(f"Inside get_location(), __location is: {__location}")
+def get_location():
+    '''Return location list'''
     return __location
 
 def load_artifacts():
     print("Loading saved artifacts...")
 
-    base_path = os.path.abspath(os.path.dirname(__file__))  
-    model_folder = os.path.join(base_path, "Model")
+    try:
+        base_path = os.getcwd()   # yeh current working directory lega — render me bhi sahi chalega
+        model_folder = os.path.join(base_path, "Model")
 
-    columns_path = os.path.join(model_folder, "columns.json")
-    model_path = os.path.join(model_folder, "linearModel")
+        with open(os.path.join(model_folder, "columns.json"), "r") as f:
+            global __location
+            global __data_columns
+            __data_columns = json.load(f)['columns']
+            __location = __data_columns[4:]
 
-    print(f"Trying to load columns from: {columns_path}")
-    print(f"Trying to load model from: {model_path}")
+        with open(os.path.join(model_folder, "linearModel"), "rb") as f:
+            global __model
+            __model = pickle.load(f)
 
-    if not os.path.exists(columns_path):
-        print("columns.json file not found! 🚨")
-    if not os.path.exists(model_path):
-        print("linearModel file not found! 🚨")
+        print("Saved artifacts loaded successfully!")
 
-    with open(columns_path, "r") as f:
-        global __location
-        global __data_columns
-        __data_columns = json.load(f)['columns']
-        __location = __data_columns[4:]
-        print("Raw data columns loaded:", __data_columns)
-        print("Location list extracted:", __location)
+    except Exception as e:
+        print(f"Error loading artifacts: {e}")
 
-    with open(model_path, "rb") as f:
-        global __model
-        __model = pickle.load(f)
-
-    print("Saved artifacts loaded successfully!")
-    print(f"__location after loading: {__location}")
-
-def estimatePrice(location,sqft,bath,balcony,bhk):
+def estimatePrice(location, sqft, bath, balcony, bhk):
     try:
         loc_index = __data_columns.index(location.lower())
     except:
@@ -56,6 +46,7 @@ def estimatePrice(location,sqft,bath,balcony,bhk):
     x[3] = bhk
     if loc_index >= 0:
         x[loc_index] = 1
+
     return round(__model.predict([x])[0], 2)
 
 if __name__ == "__main__":

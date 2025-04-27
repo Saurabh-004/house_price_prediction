@@ -8,14 +8,13 @@ __data_columns = None
 __model = None
 
 def get_location(): 
-    '''To get the location list'''
+    print(f"Inside get_location(), __location is: {__location}")
     return __location
 
 def load_artifacts():
     print("Loading saved artifacts...")
 
-    base_path = os.path.abspath(os.path.dirname(__file__))  # pakka absolute path
-
+    base_path = os.path.abspath(os.path.dirname(__file__))  
     model_folder = os.path.join(base_path, "Model")
 
     columns_path = os.path.join(model_folder, "columns.json")
@@ -34,12 +33,15 @@ def load_artifacts():
         global __data_columns
         __data_columns = json.load(f)['columns']
         __location = __data_columns[4:]
+        print("Raw data columns loaded:", __data_columns)
+        print("Location list extracted:", __location)
 
     with open(model_path, "rb") as f:
         global __model
         __model = pickle.load(f)
 
     print("Saved artifacts loaded successfully!")
+    print(f"__location after loading: {__location}")
 
 def estimatePrice(location,sqft,bath,balcony,bhk):
     try:

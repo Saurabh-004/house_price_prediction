@@ -1,7 +1,7 @@
 import pickle
 import json
 import numpy as np
-
+import os
 
 __location = None
 __data_columns = None
@@ -12,25 +12,23 @@ def get_location():
     return __location
 
 
-
 def load_artifacts():
-    print("Loading saved artifacts")
-    
-    try:
-        with open("Model/columns.json", "r") as f:
-            global __location
-            global __data_columns
-            __data_columns = json.load(f)['columns']
-            __location = __data_columns[4:]  # Assuming location starts from the 5th element.
-            print(f"Loaded locations: {__location}")  # Debugging line
+    print("Loading saved artifacts...")
 
-        with open("Model/linearModel", "rb") as f:
-            global __model
-            __model = pickle.load(f)
+    # Important: Dynamically set base path
+    base_path = os.path.dirname(__file__)
 
-        print("Saved artifacts loaded successfully.")
-    except Exception as e:
-        print(f"Error loading artifacts: {str(e)}")
+    with open(os.path.join(base_path, "Model", "columns.json"), "r") as f:
+        global __location
+        global __data_columns
+        __data_columns = json.load(f)['columns']
+        __location = __data_columns[4:]
+
+    with open(os.path.join(base_path, "Model", "linearModel"), "rb") as f:
+        global __model
+        __model = pickle.load(f)
+
+    print("Saved artifacts loaded successfully!")
 
 
 def estimatePrice(location,sqft,bath,balcony,bhk):

@@ -43,7 +43,13 @@ def make_prediction():
         return jsonify({'error': str(e)})
 
 # IMPORTANT: Port change for Render/Heroku
+# app.py (updated)
+# ... (previous imports)
+
+util.load_artifacts()  # Load artifacts when the app starts
+
+# ... (rest of your routes)
+
 if __name__ == "__main__":
-    util.load_artifacts()
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)

@@ -11,27 +11,29 @@ def get_location():
     '''Return location list'''
     return __location
 
+# util.py (updated)
 def load_artifacts():
     print("Loading saved artifacts...")
-
     try:
-        base_path = os.getcwd()   # yeh current working directory lega — render me bhi sahi chalega
-        model_folder = os.path.join(base_path, "Model")
+        # Get the directory of util.py
+        base_path = os.path.dirname(os.path.abspath(__file__))
+        model_folder = os.path.join(base_path, "Model")  # Model folder is next to util.py
 
+        # Load columns.json
         with open(os.path.join(model_folder, "columns.json"), "r") as f:
-            global __location
-            global __data_columns
-            __data_columns = json.load(f)['columns']
-            __location = __data_columns[4:]
+            global __location, __data_columns
+            data = json.load(f)
+            __data_columns = data['columns']  # Ensure the key is 'columns'
+            __location = __data_columns[4:]  # Adjust slicing if needed
 
+        # Load the model
         with open(os.path.join(model_folder, "linearModel"), "rb") as f:
             global __model
             __model = pickle.load(f)
 
-        print("Saved artifacts loaded successfully!")
-
+        print("Artifacts loaded successfully!")
     except Exception as e:
-        print(f"Error loading artifacts: {e}")
+        print(f"Error loading artifacts: {str(e)}")
 
 def estimatePrice(location, sqft, bath, balcony, bhk):
     try:
